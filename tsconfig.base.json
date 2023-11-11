@@ -20,6 +20,9 @@
     "paths": {
       "@test-razroo-one/common/styles": [
         "libs/common/styles/src/index.ts"
+      ],
+      "@test-razroo-one/common/ui": [
+        "libs/common/ui/src/index.ts"
       ]
     }
   },
