@@ -23,6 +23,9 @@
       ],
       "@test-razroo-one/common/ui": [
         "libs/common/ui/src/index.ts"
+      ],
+      "@test-razroo-one/home": [
+        "libs/home/src/index.ts"
       ]
     }
   },
