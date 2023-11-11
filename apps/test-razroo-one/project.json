@@ -1,0 +1,95 @@
+{
+  "name": "test-razroo-one",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/test-razroo-one/src",
+  "prefix": "test-razroo-one",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/test-razroo-one",
+        "index": "apps/test-razroo-one/src/index.html",
+        "main": "apps/test-razroo-one/src/main.ts",
+        "polyfills": "apps/test-razroo-one/src/polyfills.ts",
+        "tsConfig": "apps/test-razroo-one/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/test-razroo-one/src/favicon.ico",
+          "apps/test-razroo-one/src/assets"
+        ],
+        "styles": ["apps/test-razroo-one/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/test-razroo-one/src/environments/environment.ts",
+              "with": "apps/test-razroo-one/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "test-razroo-one:build:production"
+        },
+        "development": {
+          "browserTarget": "test-razroo-one:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "test-razroo-one:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/test-razroo-one/src/**/*.ts",
+          "apps/test-razroo-one/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/test-razroo-one"],
+      "options": {
+        "jestConfig": "apps/test-razroo-one/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

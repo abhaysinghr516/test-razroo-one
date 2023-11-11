@@ -1,0 +1,29 @@
+{
+  "name": "test-razroo-one-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-razroo-one-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-razroo-one-e2e/cypress.json",
+        "devServerTarget": "test-razroo-one:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-razroo-one:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-razroo-one-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-razroo-one"]
+}
